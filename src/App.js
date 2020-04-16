@@ -5,16 +5,6 @@ import SortingPlayground from './components/sortingPlayground'
 import './App.css';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     //default item count = 6
-  //     listCount : 6,
-  //     sortingList: [],
-  //     sorted : false,
-  //     isDisabled: false
-  //   };
-  // }
 
   state = {
       //default item count = 6
@@ -45,8 +35,10 @@ class App extends Component {
         sortingList: [...prevState.sortingList, arrItem] 
       }));
     }
-    this.setState({ sorted : false });
-    this.setState({ isDisabled : false});
+    this.setState({
+      sorted: false,
+      isDisabled: false
+    });
   }
 
 
@@ -54,10 +46,12 @@ class App extends Component {
     let newCount = e.target.value;
     //let newCountStyle = e.target.style;
     if(newCount <= 8 && newCount >= 2) {
-      this.setState({ listCount: newCount });
-      this.setState({ isDisabled : false });
-      this.setState({ sorted : false });
-      this.setState({ sortingList : [] });
+      this.setState({
+        listCount: newCount,
+        isDisabled : false,
+        sorted : false,
+        sortingList : []
+      });
       for(var i = 0; i < newCount; i++){
         let randNum = Math.floor((Math.random() * 100) + 1);
         let arrItem = [randNum, '#'+Math.random().toString(16).substr(-6)];
@@ -88,9 +82,12 @@ class App extends Component {
         }
         end--; 
     } while(swap); 
-    this.setState({ sortingList : newList });
-    this.setState({ sorted : true });
-    this.setState({ isDisabled : true });
+
+    this.setState({
+      sortingList: newList,
+      sorted: true,
+      isDisabled: true
+    });
 }
 
 isDisabled = () => {
